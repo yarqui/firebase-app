@@ -45,7 +45,7 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 320px;
+  max-width: 360px;
   margin: 30px auto;
   padding: 32px;
   gap: 16px;
@@ -54,7 +54,7 @@ img {
   border-style: solid;
   border-radius: 10px;
   border-color: rgb(37, 37, 37);
-  background-color: #eff2f5;
+  background-color: #f6fcff;
 }
 
 .cart__img {
@@ -88,4 +88,25 @@ img {
   border-width: 0;
   border-radius: 8px;
   background-color: #b15164;
+}
+
+.shopping-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  list-style: none;
+}
+
+.shopping-item {
+  flex-grow: 1;
+  padding: 16px;
+  border-width: 0;
+  border-radius: 8px;
+  font-size: 18px;
+
+  text-align: center;
+
+  background-color: #fffdf8;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
 }

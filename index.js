@@ -4,6 +4,7 @@ import {
   ref,
   push,
   onValue,
+  remove,
 } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
 
 // the URl to my database
@@ -27,9 +28,29 @@ const clearShoppingListEl = () => {
   shoppingListEL.innerHTML = "";
 };
 
-const renderList = (itemValue) => {
-  const listItem = `<li>${itemValue}</li>`;
-  shoppingListEL.insertAdjacentHTML("beforeend", listItem);
+const removeItemFromDB = (id) => {
+  // this is the exact location of the item in DB
+  let itemToDelete = ref(database, `shoppingList/${id}`);
+  // remove() - is the method of firebase, that removes an item
+  remove(itemToDelete);
+};
+
+const renderList = (item) => {
+  // item is an array of two values: id & content
+  let itemId = item[0];
+  let itemValue = item[1];
+
+  let newEl = document.createElement("li");
+
+  newEl.classList.add("shopping-item");
+  newEl.setAttribute("id", `${itemId}`);
+  newEl.textContent = `${itemValue}`;
+
+  newEl.addEventListener("dblclick", () => removeItemFromDB(itemId));
+
+  shoppingListEL.append(newEl);
+
+  // shoppingListEL.insertAdjacentHTML("beforeend", newEl);
 };
 
 // reads static snapshots of the contents whenever DB changes. 1st arg - DB ref from where we're fetching the data, 2nd - is the snapshot callback, that gets a snapshot of DB collection
@@ -39,8 +60,11 @@ onValue(shoppingListInDB, (snapshot) => {
   // val() extracts the contents of the snapshot
   if (!snapshot.val()) return;
 
-  let shoppingItems = Object.values(snapshot.val());
-  shoppingItems.forEach((item) => renderList(item));
+  let shoppingItemsArray = Object.entries(snapshot.val());
+
+  shoppingItemsArray.forEach((item) => {
+    renderList(item);
+  });
 });
 
 const resetInputField = () => {
