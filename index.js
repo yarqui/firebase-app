@@ -49,17 +49,22 @@ const renderList = (item) => {
   newEl.addEventListener("dblclick", () => removeItemFromDB(itemId));
 
   shoppingListEL.append(newEl);
-
-  // shoppingListEL.insertAdjacentHTML("beforeend", newEl);
 };
 
 // reads static snapshots of the contents whenever DB changes. 1st arg - DB ref from where we're fetching the data, 2nd - is the snapshot callback, that gets a snapshot of DB collection
 onValue(shoppingListInDB, (snapshot) => {
   clearShoppingListEl();
 
-  // val() extracts the contents of the snapshot
-  if (!snapshot.val()) return;
+  if (!snapshot.exists()) {
+    shoppingListEL.insertAdjacentHTML(
+      "beforeend",
+      "<p>No items here... yet</p>"
+    );
 
+    return;
+  }
+
+  // val() extracts the contents of the snapshot
   let shoppingItemsArray = Object.entries(snapshot.val());
 
   shoppingItemsArray.forEach((item) => {
@@ -73,6 +78,8 @@ const resetInputField = () => {
 
 const addItemToDB = () => {
   let inputValue = inputFieldEl.value.trim();
+
+  if (!inputValue) return;
 
   // pushes input value to DB. 1st - the reference name, 2nd - input value
   push(shoppingListInDB, inputValue);
