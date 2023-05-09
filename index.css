@@ -1,0 +1,91 @@
+@import-normalize; /* bring in normalize.css styles */
+
+html {
+  box-sizing: border-box;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font-family: "Rubik", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.cart__wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 320px;
+  margin: 30px auto;
+  padding: 32px;
+  gap: 16px;
+
+  border-width: 4px;
+  border-style: solid;
+  border-radius: 10px;
+  border-color: rgb(37, 37, 37);
+  background-color: #eff2f5;
+}
+
+.cart__img {
+  width: 100px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.cart__input {
+  padding: 16px;
+  min-width: 240px;
+
+  text-align: center;
+  font-size: 20px;
+  font-family: inherit;
+
+  border-width: 0;
+  border-radius: 8px;
+  background-color: #dfe5ec;
+}
+
+.cart__add-btn {
+  padding: 16px;
+  min-width: 240px;
+
+  text-align: center;
+  font-size: 20px;
+  font-family: inherit;
+  color: white;
+
+  border-width: 0;
+  border-radius: 8px;
+  background-color: #b15164;
+}
