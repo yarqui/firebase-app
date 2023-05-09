@@ -17,6 +17,7 @@ body {
   font-family: "Rubik", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  user-select: none; /* prevents from selecting anything in the body */
 }
 
 h1,
@@ -100,7 +101,6 @@ img {
   gap: 12px;
 
   list-style: none;
-  user-select: none; /* prevents from selecting items in the list on double-click */
 }
 
 .shopping-item {
