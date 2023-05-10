@@ -55,7 +55,14 @@ img {
   border-style: solid;
   border-radius: 10px;
   border-color: rgb(37, 37, 37);
-  background-color: #f6fcff;
+  /* background-color: #f6fcff; */
+  background-image: linear-gradient(
+    160deg,
+    #ffa1e1 0%,
+    #972aff 40%,
+    #5654fc 50%,
+    #71f1ed 80%
+  );
 }
 
 .cart__img {
@@ -88,7 +95,7 @@ img {
 
   border-width: 0;
   border-radius: 8px;
-  background-color: #b15164;
+  background-color: #b1516490;
 
   &:hover {
     background-color: #432000;
@@ -116,8 +123,10 @@ img {
   color: #432000;
   background-color: #fffdf8;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+  /* filter: blur(1px); */
 
   &:hover {
+    color: #432000;
     background-color: #ffecc7;
   }
 }
